@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coordinate Clicker</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Click on the map to get coordinates:</h2>
+
+<div id="map"></div>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.6178625394255!2d120.84594857042512!3d14.391507851401272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33962d74c4ba01fb%3A0xfc5d27fdeef2731c!2sSM%20City%20Tanza!5e0!3m2!1sen!2sph!4v1710597405519!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: {lat: -34.397, lng: 150.644}
+        });
+
+        var marker;
+
+        map.addListener('click', function(event) {
+            if (marker) {
+                marker.setMap(null);
+            }
+            marker = new google.maps.Marker({
+                position: event.latLng,
+                map: map
+            });
+
+            var coordinates = "Latitude: " + event.latLng.lat().toFixed(6) + ", Longitude: " + event.latLng.lng().toFixed(6);
+            alert(coordinates);
+        });
+
+        map.addListener('rightclick', function(event) {
+            var coordinates = event.latLng.lat().toFixed(6) + "," + event.latLng.lng().toFixed(6);
+            window.open("https://www.google.com/maps/search/?api=1&query=" + coordinates);
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+<!-- Replace YOUR_API_KEY with your Google Maps API key -->
+</body>
+</html>

@@ -1,0 +1,52 @@
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column; /* Display tabs vertically on the left */
+    width: 150px; /* Adjust the width as needed */
+    background-color: #f1f1f1;
+}
+
+.tab {
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.tab:hover {
+    background-color: #ddd;
+}
+
+.tab-content {
+    border: 1px solid #ccc;
+    padding: 20px;
+    display: none;
+    border-radius: 0 5px 5px 0;
+}
+
+.tab-content h2 {
+    color: #ff5733; /* Menacing orange-red */
+}
+
+.tab-content p {
+    color: #333;
+    margin-top: 10px;
+}
+
+:target {
+    display: block;
+}
+
+.tab-content:target {
+    display: block;
+}
